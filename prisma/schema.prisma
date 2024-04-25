@@ -1,0 +1,87 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// // User model
+// model User {
+//   id        Int      @id @default(autoincrement())
+//   firstName String
+//   lastName  String
+//   email     String   @unique
+//   phone     String?
+//   password  String
+//   isAdmin   Boolean  @default(false)
+//   createdAt DateTime @default(now())
+//   updatedAt DateTime @updatedAt
+//   drinks    Drink[]
+//   APIKey    APIKey[]
+// }
+
+// // Drink model
+// model Drink {
+//   id          Int          @id @default(autoincrement())
+//   name        String
+//   description String?
+//   imageUrl    String?
+//   recipe      String?
+//   isAlcoholic Boolean
+//   createdAt   DateTime     @default(now())
+//   updatedAt   DateTime     @updatedAt
+//   userId      Int
+//   user        User         @relation(fields: [userId], references: [id], onDelete: Cascade)
+//   categories  Category[]   @relation("DrinkCategory")
+//   glass       Glass?       @relation(fields: [glassId], references: [id])
+//   glassId     Int?
+//   ingredients Ingredient[] @relation("DrinkIngredient")
+// }
+
+// // Category model
+// model Category {
+//   id          Int      @id @default(autoincrement())
+//   name        String
+//   description String?
+//   imageUrl    String?
+//   createdAt   DateTime @default(now())
+//   updatedAt   DateTime @updatedAt
+//   drinks      Drink[]  @relation("DrinkCategory")
+// }
+
+// // Glass model
+// model Glass {
+//   id        Int      @id @default(autoincrement())
+//   name      String
+//   createdAt DateTime @default(now())
+//   updatedAt DateTime @updatedAt
+//   drinks    Drink[] // Removed `@relation` attribute from this field
+// }
+
+// // Ingredient model
+// model Ingredient {
+//   id          Int      @id @default(autoincrement())
+//   name        String
+//   description String?
+//   createdAt   DateTime @default(now())
+//   updatedAt   DateTime @updatedAt
+//   drinks      Drink[]  @relation("DrinkIngredient")
+// }
+
+// // APIKey model
+// model APIKey {
+//   id        Int      @id @default(autoincrement())
+//   key       String   @unique
+//   userId    Int
+//   user      User     @relation(fields: [userId], references: [id])
+//   createdAt DateTime @default(now())
+//   updatedAt DateTime @updatedAt
+// }
