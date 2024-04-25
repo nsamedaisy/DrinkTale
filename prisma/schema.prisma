@@ -68,12 +68,11 @@ model Glass {
 
 // Ingredient model
 model Ingredient {
-  id          Int      @id @default(autoincrement())
-  name        String
-  description String?
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
-  drinks      Drink[]  @relation("DrinkIngredient")
+  id        Int      @id @default(autoincrement())
+  name      String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  drinks    Drink[]  @relation("DrinkIngredient")
 }
 
 // APIKey model
