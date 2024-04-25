@@ -29,6 +29,29 @@ export const getUser = async (id: number): Promise<User | null> => {
     return db.user.findUnique({
         where: {
             id,
+        },
+
+    })
+}
+
+export const createUser = async (user: Omit<User, "id">): Promise<User> => {
+    // const { firstName, lastName} = user;
+    return db.user.create({
+        data: user,
+    })
+};
+
+export const updateUser = async (user: Omit<User, "id">, id: number): Promise<User> => {
+    return db.user.update({
+        where: { id: Number(id) },
+        data: user
+    })
+}
+
+export const deleteUser = async (id: number): Promise<void> => {
+    await db.user.delete({
+        where: {
+            id: +id
         }
     })
 }
