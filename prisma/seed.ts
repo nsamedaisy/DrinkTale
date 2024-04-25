@@ -1,39 +1,64 @@
 import { db } from "../src/utils/db.server";
 
 type User = {
-    firstName: String;
-    lastName: String;
-    email: String;
-    phone: String;
-    password: String;
-    isAdmin: Boolean;
+    firstName: string;
+    lastName: string;
+    email: string;
+    phone: string;
+    password: string;
+    isAdmin: boolean;
 };
 
 type Drink = {
-    name: String;
-    description: String;
-    imageUrl: String;
-    recipe: String;
-    isAlcoholic: Boolean;
+    name: string;
+    description: string;
+    imageUrl: string;
+    recipe: string;
+    isAlcoholic: boolean;
 };
 
 type Category = {
-    name: String;
-    description: String;
-    imageUrl: String;
+    name: string;
+    description: string;
+    imageUrl: string;
 };
 
 type Glass = {
-    name: String;
+    name: string;
 };
 
 type Ingredient = {
-    name: String;
+    name: string;
 };
 
 type APIKey = {
-    key: String;
+    key: string;
 };
+
+async function seed(): Promise<void> {
+    await Promise.all(
+        getUsers().map((user) => {
+            return db.user.create({
+                data: {
+                    firstName: user.firstName,
+                    lastName: user.lastName,
+                    email: user.email,
+                    phone: user.phone,
+                    password: user.password,
+                    isAdmin: user.isAdmin,
+                }
+            });
+        })
+    );
+
+    const user = await db.user.findFirst({
+        where: {
+            firstName: 'John',
+        }
+    });
+
+    console.log(user);
+}
 
 function getUsers(): Array<User> {
     return [
@@ -53,7 +78,7 @@ function getUsers(): Array<User> {
             password: 'password456',
             isAdmin: false,
         },
-    ]
+    ];
 }
 
 function getDrinks(): Array<Drink> {
@@ -72,7 +97,7 @@ function getDrinks(): Array<Drink> {
             recipe: '1. Combine vodka, cranberry juice, lime juice...',
             isAlcoholic: true,
         },
-    ]
+    ];
 }
 
 function getCategories(): Array<Category> {
@@ -87,7 +112,7 @@ function getCategories(): Array<Category> {
             description: 'Non-alcoholic mixed beverages',
             imageUrl: 'https://example.com/mocktails.jpg',
         },
-    ]
+    ];
 }
 
 function getGlasses(): Array<Glass> {
@@ -98,7 +123,7 @@ function getGlasses(): Array<Glass> {
         {
             name: 'Martini',
         },
-    ]
+    ];
 }
 
 function getIngredients(): Array<Ingredient> {
@@ -115,7 +140,7 @@ function getIngredients(): Array<Ingredient> {
         {
             name: 'Cranberry Juice',
         },
-    ]
+    ];
 }
 
 function getAPIKeys(): Array<APIKey> {
@@ -126,5 +151,7 @@ function getAPIKeys(): Array<APIKey> {
         {
             key: 'API_KEY_2',
         },
-    ]
+    ];
 }
+
+seed().catch(console.error);
