@@ -35,7 +35,7 @@ drinkRouter.get("/:id", async (req: Request, res: Response) => {
 // POST: create a drink 
 drinkRouter.post("/", async (req: Request, res: Response) => {
     try {
-        const newDrink = req.body as Drink; // Assuming the request body contains the new drink data
+        const newDrink = req.body as Drink;
         const drink = await DrinkService.createDrink(newDrink);
         return res.status(201).json(drink);
     } catch (error: any) {
