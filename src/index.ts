@@ -4,6 +4,7 @@ import cors from "cors";
 
 import { userRouter } from "./users/user.router";
 import { drinkRouter } from "./drinks/drink.router"
+import { glassRouter } from "./glasses/glass.router";
 
 dotenv.config();
 
@@ -19,6 +20,7 @@ app.use(cors());
 app.use(express.json());
 app.use("/api/users", userRouter)
 app.use("/api/drinks", drinkRouter)
+app.use("/api/glass", glassRouter)
 
 app.listen(PORT, () => {
     console.log(`Listening on port ${PORT}`);
