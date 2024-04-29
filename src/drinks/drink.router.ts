@@ -47,7 +47,7 @@ drinkRouter.post("/", async (req: Request, res: Response) => {
 drinkRouter.put("/:id", async (req: Request, res: Response) => {
     const id: number = parseInt(req.params.id, 10);
     try {
-        const updatedDrinkData = req.body as Partial<Drink>; // Assuming the request body contains the updated drink data
+        const updatedDrinkData: Omit<Drink, "id"> = req.body;
         const updatedDrink = await DrinkService.updateDrink(updatedDrinkData, id);
         return res.status(200).json(updatedDrink);
     } catch (error: any) {
