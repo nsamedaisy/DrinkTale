@@ -1,6 +1,4 @@
 import express from "express";
-import { Response, Request } from "express";
-import { body, validationResult } from "express-validator";
 import * as GlassService from "./glass.service";
 import { Glass } from "@prisma/client";
 import { db } from "../utils/db.server";
