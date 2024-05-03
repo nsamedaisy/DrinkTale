@@ -9,7 +9,7 @@ ingredientRouter.get("/", async (req: Request, res: Response) => {
     try {
         const ingredients = await IngredientService.getAllIngredients();
         res.status(200).json(ingredients);
-    } catch (error) {
+    } catch (error: any) {
         res.status(500).json({ message: error.message });
     }
 });
@@ -20,7 +20,7 @@ ingredientRouter.post("/", async (req: Request, res: Response) => {
     try {
         const newIngredient = await IngredientService.createIngredient(name);
         res.status(201).json(newIngredient);
-    } catch (error) {
+    } catch (error: any) {
         res.status(500).json({ message: error.message });
     }
 });
@@ -32,7 +32,7 @@ ingredientRouter.put("/:id", async (req: Request, res: Response) => {
     try {
         const updatedIngredient = await IngredientService.updateIngredient(Number(id), name);
         res.status(200).json(updatedIngredient);
-    } catch (error) {
+    } catch (error: any) {
         res.status(500).json({ message: error.message });
     }
 });
@@ -43,7 +43,7 @@ ingredientRouter.delete("/:id", async (req: Request, res: Response) => {
     try {
         await IngredientService.deleteIngredient(Number(id));
         res.status(204).end();
-    } catch (error) {
+    } catch (error: any) {
         res.status(500).json({ message: error.message });
     }
 });

@@ -9,7 +9,7 @@ categoryRouter.get("/", async (req: Request, res: Response) => {
     try {
         const categories = await CategoryService.getAllCategories();
         res.status(200).json(categories);
-    } catch (error) {
+    } catch (error: any) {
         res.status(500).json({ message: error.message });
     }
 });
@@ -20,7 +20,7 @@ categoryRouter.post("/", async (req: Request, res: Response) => {
     try {
         const newCategory = await CategoryService.createCategory(name, description);
         res.status(201).json(newCategory);
-    } catch (error) {
+    } catch (error: any) {
         res.status(500).json({ message: error.message });
     }
 });
@@ -32,7 +32,7 @@ categoryRouter.put("/:id", async (req: Request, res: Response) => {
     try {
         const updatedCategory = await CategoryService.updateCategory(Number(id), name, description);
         res.status(200).json(updatedCategory);
-    } catch (error) {
+    } catch (error: any) {
         res.status(500).json({ message: error.message });
     }
 });
@@ -43,7 +43,7 @@ categoryRouter.delete("/:id", async (req: Request, res: Response) => {
     try {
         await CategoryService.deleteCategory(Number(id));
         res.status(204).end();
-    } catch (error) {
+    } catch (error: any) {
         res.status(500).json({ message: error.message });
     }
 });
