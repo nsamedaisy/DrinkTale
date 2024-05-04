@@ -7,7 +7,7 @@ import { v4 as uuidv4 } from 'uuid';
 import { error } from "console";
 
 
-const jwtSecret = process.env.JWT_SECRET
+const jwtSecret: string = process.env.JWT_SECRET ?? 'default_secret';
 
 export const register = async (req: Request, res: Response): Promise<void> => {
     try {
