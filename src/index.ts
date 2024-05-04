@@ -17,19 +17,19 @@ if (!process.env.PORT) {
 
 const PORT: number = parseInt(process.env.PORT as string, 10);
 
-const app = express()
+const app = express();
 
 app.use(cors());
 app.use(express.json());
-app.use("/api/users", userRouter)
-app.use("/api/drinks", drinkRouter)
-app.use("/api/glass", glassRouter)
-app.use("/api/ingredients", ingredientRouter)
-app.use("/api/categories", categoryRouter)
-app.use("/register", register)
-app.use("login", login)
-app.use("logout", logout)
-app.use("apiKey", generateAPIKey)
+app.use("/api/users", userRouter);
+app.use("/api/drinks", drinkRouter);
+app.use("/api/glass", glassRouter);
+app.use("/api/ingredients", ingredientRouter);
+app.use("/api/categories", categoryRouter);
+app.post("/register", register);
+app.post("/login", login);
+app.post("/logout", logout);
+app.post("/apiKey", generateAPIKey);
 
 app.listen(PORT, () => {
     console.log(`Listening on port ${PORT}`);
