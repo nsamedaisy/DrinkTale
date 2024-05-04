@@ -64,6 +64,17 @@ export const generateAPIKey = async (req: Request, res: Response): Promise<void>
         })
         res.status(201).json({ apiKey })
 
+    } catch (error) {
+        console.error('error generating API key:', error)
+        res.status(500).json({ error: 'internal server error' })
     }
 }
 
+export const logout = async (req: Request, res: Response): Promise<void> => {
+    try {
+
+        res.status(200).json({ message: 'Logout successful' })
+    } catch (error) {
+        console.error()
+    }
+}
