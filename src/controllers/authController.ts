@@ -4,7 +4,6 @@ import { db } from "../utils/db.server";
 import bcrypt from 'bcryptjs';
 import jwt from "jsonwebtoken";
 import { v4 as uuidv4 } from 'uuid';
-import { error } from "console";
 
 
 const jwtSecret: string = process.env.JWT_SECRET ?? 'default_secret';

@@ -7,7 +7,6 @@ import { drinkRouter } from "./drinks/drink.router"
 import { glassRouter } from "./glasses/glass.router";
 import { ingredientRouter } from "./ingredients/ingredient.router";
 import { categoryRouter } from "./categories/category.router";
-import { register, login, logout, generateAPIKey } from "./controllers/authController";
 
 dotenv.config();
 
@@ -26,10 +25,6 @@ app.use("/api/drinks", drinkRouter);
 app.use("/api/glass", glassRouter);
 app.use("/api/ingredients", ingredientRouter);
 app.use("/api/categories", categoryRouter);
-app.post("/register", register);
-app.post("/login", login);
-app.post("/logout", logout);
-app.post("/apiKey", generateAPIKey);
 
 app.listen(PORT, () => {
     console.log(`Listening on port ${PORT}`);
