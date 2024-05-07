@@ -10,19 +10,22 @@ type User = {
     isAdmin: boolean;
 };
 
+// export const getAllUsers = async (): Promise<User[]> => {
+//     // return this.db.user.findMany()
+//     return db.user.findMany({
+//         select: {
+//             id: true,
+//             firstName: true,
+//             lastName: true,
+//             email: true,
+//             phone: true,
+//             password: true,
+//             isAdmin: true,
+//         },
+//     })
+// }
 export const getAllUsers = async (): Promise<User[]> => {
-    // return this.db.user.findMany()
-    return db.user.findMany({
-        select: {
-            id: true,
-            firstName: true,
-            lastName: true,
-            email: true,
-            phone: true,
-            password: true,
-            isAdmin: true,
-        },
-    })
+    return db.user.findMany();
 }
 
 export const getUser = async (id: number): Promise<User | null> => {
