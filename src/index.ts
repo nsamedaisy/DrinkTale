@@ -7,6 +7,8 @@ import { drinkRouter } from "./drinks/drink.router"
 import { glassRouter } from "./glasses/glass.router";
 import { ingredientRouter } from "./ingredients/ingredient.router";
 import { categoryRouter } from "./categories/category.router";
+import authRoutes from "./routes/authRoutes"
+import { register } from "./controllers/authController";
 
 dotenv.config();
 
@@ -25,6 +27,8 @@ app.use("/api/drinks", drinkRouter);
 app.use("/api/glass", glassRouter);
 app.use("/api/ingredients", ingredientRouter);
 app.use("/api/categories", categoryRouter);
+app.use("/auth", authRoutes)
+
 
 app.listen(PORT, () => {
     console.log(`Listening on port ${PORT}`);
