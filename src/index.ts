@@ -8,7 +8,6 @@ import { glassRouter } from "./glasses/glass.router";
 import { ingredientRouter } from "./ingredients/ingredient.router";
 import { categoryRouter } from "./categories/category.router";
 import authRoutes from "./routes/authRoutes"
-import { register } from "./controllers/authController";
 
 dotenv.config();
 
