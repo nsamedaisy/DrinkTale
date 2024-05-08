@@ -8,6 +8,7 @@ import { glassRouter } from "./glasses/glass.router";
 import { ingredientRouter } from "./ingredients/ingredient.router";
 import { categoryRouter } from "./categories/category.router";
 import authRoutes from "./routes/authRoutes"
+import profileRoute from "./routes/profileRoute"
 
 dotenv.config();
 
@@ -27,6 +28,7 @@ app.use("/api/glass", glassRouter);
 app.use("/api/ingredients", ingredientRouter);
 app.use("/api/categories", categoryRouter);
 app.use("/auth", authRoutes)
+app.use("/profile", profileRoute)
 
 
 app.listen(PORT, () => {

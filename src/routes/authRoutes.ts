@@ -1,5 +1,3 @@
-// src/routes/authRoutes.ts
-
 import express from 'express';
 import { register, login, logout, generateAPIKey } from '../controllers/authController';
 

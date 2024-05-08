@@ -6,7 +6,7 @@ import { getUserProfile, updateUserProfile } from '../controllers/profileControl
 
 const router = express.Router();
 
-router.get('/profile', authenticateUser, getUserProfile);
-router.put('/profile', authenticateUser, updateUserProfile)
+router.get('/', authenticateUser, getUserProfile);
+router.put('/', authenticateUser, updateUserProfile)
 
 export default router;
